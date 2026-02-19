@@ -3,9 +3,9 @@
 #include <random>	// Для создания массива случайных чисел
 #include <cstring>	// Для принятия параметра названия файла в FileMas
 #include <fstream>	// Для работы с файлами
-#include <ctime>	// Для получения времени работы кода в секундах
 #include <format>	// Для совместного использования текста и переменных в cout
 #include <chrono>	// Для получения времени работы кода в наносекундах
+#include <vector>	
 
 using namespace std;
 using namespace std::chrono; // namespace для функций получения времени работы кода в наносекундах
@@ -16,13 +16,11 @@ using namespace std::chrono; // namespace для функций получени
 template <typename funcT> // Для принятия функции любого типа
 void timer(funcT func){
 
-	time_t t0 = time(nullptr); // Начало отсчёта секунд
 	auto ns0 = steady_clock::now(); // Начало отсчёта наносекунд
 	func(); // Запуск проверочной функции
-	time_t t1 = time(nullptr); // Конец отсчёта секунд
 	auto ns1 = steady_clock::now(); // Конец отсчёта наносекунд
 
-	cout << "Время работы кода: " << t1 - t0 << "s. или " << ns1 - ns0 << endl;
+	cout << "Время работы кода: " << ns1 - ns0 << endl;
 }
 
 
@@ -81,7 +79,6 @@ void FileMas(int n, fid *a, const string &sf)
 {
 	ofstream F(sf);	// Разрешает запись файла
     
-    F << "Массив: " << endl;
     for (int i = 0; i < n; i++) {
         F << a[i] << " ";	// Вписывает элемент массива в файл
     }
@@ -96,7 +93,7 @@ template <typename fid>
 void SearchMas(int n, fid *a, fid min, fid max){
 
 	int j = 0;
-	double *b = new double[j];
+	vector<double> b(j);
 
 	for (int i = 0; i < n; ++i)
 	{
@@ -109,7 +106,7 @@ void SearchMas(int n, fid *a, fid min, fid max){
 	}
 	
 	cout << "Найденные значения:" << endl;
-	for (int i = 1; i <= j; ++i)
+	for (int i = 0; i < j; ++i)
 	{
 		cout << b[i] << endl;	// Выводит значения удовлетворяющие требованиям
 	}
