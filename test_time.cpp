@@ -15,10 +15,10 @@ int main()
 {
 
 	int n = 100000;
-	double min = -321;
-	double max = 321;
+	int min = -32100;
+	int max = 32100;
 
-	double maxs = 0.01;
+	double maxs = 1.0;
 	long long ns = 0;
 
 	double *a = new double[n];
@@ -28,12 +28,12 @@ int main()
 	for (int i = 0; i < 8; ++i)
 	{
 
-		a = RandMas(n, min, max);
+		a = RandMasUp(n, min, max);
 
 		ns = timertest([&]() {
-		for (int j = 0; j < 2000; ++j)
+		for (int j = 0; j < 10000; ++j)
 		{
-			SearchMas(n, a, maxs);
+			SearchMasBi(n, a, maxs);
 		}});
 
 		cout << ns << endl;
