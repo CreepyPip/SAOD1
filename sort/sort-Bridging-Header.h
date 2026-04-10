@@ -3,4 +3,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "sortmod.h"
+#import "sortC.h"
+
+double* c_bubble_sort(double* data, int count);

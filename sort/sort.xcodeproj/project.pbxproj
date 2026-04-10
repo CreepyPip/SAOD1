@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		033079682F83654400474224 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033079672F83654400474224 /* main.swift */; };
 		0330796F2F83657E00474224 /* sortmod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330796E2F83657E00474224 /* sortmod.swift */; };
-		033079722F85EF4800474224 /* sortmod.m in Sources */ = {isa = PBXBuildFile; fileRef = 033079712F85EF4800474224 /* sortmod.m */; };
+		0360CC472F86973000CE8ABB /* sortC.c in Sources */ = {isa = PBXBuildFile; fileRef = 0360CC462F86973000CE8ABB /* sortC.c */; };
+		039E98052F860CE100F689E7 /* asserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E98042F860CE100F689E7 /* asserts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +30,9 @@
 		033079672F83654400474224 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0330796E2F83657E00474224 /* sortmod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sortmod.swift; sourceTree = "<group>"; };
 		033079702F85EF4800474224 /* sort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sort-Bridging-Header.h"; sourceTree = "<group>"; };
-		033079712F85EF4800474224 /* sortmod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sortmod.m; sourceTree = "<group>"; };
-		033079732F85EF9900474224 /* sortmod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sortmod.h; sourceTree = "<group>"; };
+		0360CC452F86973000CE8ABB /* sortC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sortC.h; sourceTree = "<group>"; };
+		0360CC462F86973000CE8ABB /* sortC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sortC.c; sourceTree = "<group>"; };
+		039E98042F860CE100F689E7 /* asserts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asserts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,8 +49,9 @@
 		0330795B2F83654300474224 = {
 			isa = PBXGroup;
 			children = (
-				033079732F85EF9900474224 /* sortmod.h */,
-				033079712F85EF4800474224 /* sortmod.m */,
+				0360CC452F86973000CE8ABB /* sortC.h */,
+				0360CC462F86973000CE8ABB /* sortC.c */,
+				039E98042F860CE100F689E7 /* asserts.swift */,
 				0330796E2F83657E00474224 /* sortmod.swift */,
 				033079662F83654400474224 /* sort */,
 				033079652F83654400474224 /* Products */,
@@ -131,7 +134,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0330796F2F83657E00474224 /* sortmod.swift in Sources */,
-				033079722F85EF4800474224 /* sortmod.m in Sources */,
+				039E98052F860CE100F689E7 /* asserts.swift in Sources */,
+				0360CC472F86973000CE8ABB /* sortC.c in Sources */,
 				033079682F83654400474224 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
