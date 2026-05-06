@@ -8,9 +8,35 @@
 
 import Foundation
 
-/// Пузырчатая сортировка (n^2)
+/// Простым выбором сортировка (n^2)
+/// Сложность сортировки (O(n))
 /// Принимает несортированный массив arr
-func bubble_sort (_ arr: [Double]) -> [Double] {
+/// Сортирует по возрастанию
+func selection_sort<T: Comparable>(_ arr: [T]) -> [T] {
+    var a = arr
+    var min = 0
+    
+    for i in 0..<arr.count - 1 {
+        min = i
+        for j in i+1..<arr.count {
+            if a[j] < a[min] {
+                min = j
+            }
+        }
+        a.swapAt(i, min)
+    }
+    return a
+}
+
+/// Пузырчатая сортировка (n^2)
+/// Сложность сортировки (O(n))
+/// Принимает несортированный массив arr
+/// Сортирует по возрастанию
+func bubble_sort<T: Comparable>(_ arr: [T]) -> [T] {
+    
+    // На случай малого массива
+    if arr.count <= 1 {return arr}
+    
     // Записываю в отдельный массив для изменения (arr неизменяемый)
     var a = arr
     
@@ -34,19 +60,19 @@ func bubble_sort (_ arr: [Double]) -> [Double] {
 }
 
 /// Быстрая сортировка (nlog n)
+/// Сложность сортировки (nlog n)
 /// Принимает несортированный массив arr
-func quick_sort (_ arr: [Double]) -> [Double] {
+/// Возвращает сортированный по возрастанию массив
+func quick_sort<T: Comparable>(_ arr: [T]) -> [T] {
     // Проверка на массив из одного элемента
-    if arr.count <= 1 {
-        return arr
-    }
+    if arr.count <= 1 {return arr}
     
     // Точка опоры
     let pivot = arr[arr.count/2]
     
-    var left: [Double] = []
-    var right: [Double] = []
-    var middle: [Double] = []
+    var left: [T] = []
+    var right: [T] = []
+    var middle: [T] = []
     
     // Цикл для распределения в левую и правую часть
     for i in 0...arr.count-1 {
@@ -71,13 +97,81 @@ func quick_sort (_ arr: [Double]) -> [Double] {
     return left
 }
 
-func shell_sort(_ arr: [Double]) -> [Double] {
+/// Быстрая сортировка (nlog n)
+/// Сложность сортировки (O(n))
+/// Принимает несортированный массив arr
+/// Возвращает сортированный по возрастанию массив
+func shell_sort<T: Comparable>(_ arr: [T]) -> [T] {
     var a = arr
     // Берёт шаг равный половине размера массива
     var step = Int(arr.count/2)
-    // Пока шаг равен хоть чему-то
+    // Чтобы цикл был не бесконечным
     while step > 0 {
-    
+        // Для сверки первых элементов и идущих через шаг
+        for i in step..<arr.count {
+            // Задаём j для первых элементов
+            var j = i - step
+            // Сверка условия
+            while (j >= 0 && a[j] > a[j+step]) {
+                a.swapAt(j, j+step)
+                j = j-step
+            }
+        }
+        // Уменьшаем шаг
+        step = step / 2
     }
+    // Возвращаем сортированный массив
+    return a
+}
+
+/// Сортировка слиянием (nlog n)
+/// Общая сложность складывается из 
+/// Сложность сортировки (Сложность по памяти: О (n))
+/// Принимает несортированный массив arr
+/// Возвращает сортированный по возрастанию массив
+func merge_sort(_ arr: [Double]) -> [Double] {
+    // Проверка, чтобы рекурсия не была бесконечной
+    if arr.count <= 1 {return arr}
+    // Левый, правый массив
+    var left: [Double] = []
+    var right: [Double] = []
+    // Центральное значение
+    let pivot = Int(arr.count/2)
+    // Цикл распределения
+    // распеределение в 2 цикла
+    for i in 0..<arr.count {
+        if i < pivot {
+            left.append(arr[i])
+        } else {
+            right.append(arr[i])
+        }
+    }
+    // Отсортировывает рекурсивно левый и правый распределённый массивы и передаёт во вторую функцию
+    return merge_sort_in(merge_sort(left), merge_sort(right))
+}
+
+/// Вторая часть сортировки слиянием //
+/// Принимает левую и правую часть
+func merge_sort_in(_ l: [Double],_ r: [Double]) -> [Double] {
+    var a: [Double] = []
+    var left = l
+    var right = r
+    
+    // Пока левый и правый массив не пустые
+    // Складывает 2 отсортированных массива
+    while !left.isEmpty && !right.isEmpty {
+            if left[0] < right[0] {
+                a.append(left[0])
+                left.remove(at: 0)
+            } else {
+                a.append(right[0])
+                right.remove(at: 0)
+            }
+        }
+        
+    // Остатки левого или правого массива перекидываются в основной
+    a.append(contentsOf: left)
+    a.append(contentsOf: right)
+    
     return a
 }
