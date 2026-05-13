@@ -7,6 +7,8 @@
 
 import Foundation
 
+tests()
+
 print("Введите количество")
 
 let n = Int(readLine()!)!
@@ -18,29 +20,29 @@ for _ in 0..<n {
     list.push_back(Double(readLine()!)!)
 }
 
-print("Удаляется последний элемент (\(list.get_element(n))")
+print("Удаляется последний элемент (\(list.get_element(n)!)")
 
 list.pop_back()
 
 for i in 0..<n-1 {
-    print(list.get_element(i))
+    print(list.get_element(i)!)
 }
 
-print("Удаляется первый элемент (\(list.get_element(0)))")
+print("Удаляется первый элемент (\(list.get_element(0)!))")
 list.pop_front()
 
 for i in 0..<n-2 {
-    print(list.get_element(i))
+    print(list.get_element(i)!)
 }
 
 print("Введите место элемента, который нужно удалить")
 var nd = Int(readLine()!)! - 1
 
-print("Удаляется средний элемент (\(list.get_element(nd))")
+print("Удаляется средний элемент (\(list.get_element(nd)!))")
 list.remove(nd)
 
 for i in 0..<n-3 {
-    print(list.get_element(i))
+    print(list.get_element(i)!)
 }
 
 if list.isEmpty() {
@@ -48,6 +50,21 @@ if list.isEmpty() {
 } else {print("В списке есть элементы")}
 
 print("Количество элементов в списке", list.get_size())
+
+print("Введите элемент, который нужно добавить")
+let ins = Double(readLine()!)!
+list.insert(ins, nd)
+
+print("Актуальный список:")
+for i in 0..<n-2 {
+    print(list.get_element(i)!)
+}
+
+print("Добавляю элемент в начало")
+list.push_front(ins)
+for i in 0..<n-1 {
+    print(list.get_element(i)!)
+}
 
 print("Удаление списка")
 list.clear()
