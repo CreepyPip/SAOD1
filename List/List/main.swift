@@ -12,7 +12,7 @@ tests()
 print("Введите количество")
 
 let n = Int(readLine()!)!
-let list = Collection<Double>()
+let list = List<Double>()
 
 print("Введите \(n) элементов")
 
@@ -24,9 +24,11 @@ print("Удаляется последний элемент (\(list.get_element(
 
 list.pop_back()
 
-for i in 0..<n-1 {
+print(list.get_front()!)
+for i in 1..<n-2 {
     print(list.get_element(i)!)
 }
+print(list.get_back()!)
 
 print("Удаляется первый элемент (\(list.get_element(0)!))")
 list.pop_front()
