@@ -33,7 +33,6 @@ class Tree<T:Comparable> {
 		} else {
 			
 			var current = Root
-			
 			repeat {
 				if element <= current!.data {
 					if (current?.left == nil){
@@ -71,5 +70,32 @@ class Tree<T:Comparable> {
 		} while (current != nil)
 		
 		return false
+	}
+	
+	// Удаление элемента
+	// Всё что находится по левую сторону от удаляемого, также удаляется
+	func pop(_ element: T) {
+		if Root != nil {
+			if Root!.data == element {
+				Root = Root?.right
+			} else {
+				var current = Root
+				repeat {
+					if element <= current!.data {
+						if (current!.left?.data == element){
+							current?.left = current?.left?.right
+							break
+						}
+						current = current?.left
+					} else {
+						if (current!.right?.data == element){
+							current?.right = current?.right?.right
+							break
+						}
+						current = current?.right
+					}
+				} while (current != nil)
+			}
+		}
 	}
 }
