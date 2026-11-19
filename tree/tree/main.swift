@@ -16,7 +16,9 @@ func isNot(_ n: String) -> String{
 	return num
 }
 
-let tree = Tree<Int>()
+tests()
+
+let tree = TreeBiS<Int>()
 
 print("Введите кол-во элементов, которое хотите добавить")
 
@@ -46,7 +48,13 @@ if tree.search(Int(searching)!) {
 	print("Не найдено")
 }
 
-print("Введите число, которое хотите удалить")
+print("Обход в ширину")
+print(tree.bfs())
+
+print("Обход в глубину")
+print(tree.dfsLeft())
+
+/*print("Введите число, которое хотите удалить")
 
 var delete = readLine()!
 
@@ -70,3 +78,4 @@ if tree.search(Int(searching)!) {
 } else {
 	print("Не найдено")
 }
+*/
